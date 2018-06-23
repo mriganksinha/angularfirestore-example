@@ -8,14 +8,16 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { ReportcardComponent } from './reportcard/reportcard.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReportcardComponent
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firestore),
     AngularFireStorageModule,
     AngularFirestoreModule,
     AngularFireAuthModule,

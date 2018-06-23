@@ -1,40 +1,106 @@
+<head>
+  <script src = "https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+  <div [ngSwitch] = "nextQuestionID">
+    <div *ngSwitchCase = 4>
+      <h2>Test Completed</h2>
+      
+      <p></p>
+      
+      <h2>Scorecard</h2>
+      
+      <!--<div id="piechart" style = "width: 550px; height: 400px; margin: 0 auto"></div>
+      alert('out of script tag');-->
+      <!--
+      <table style="width:100%">
+        <tr>
+          <th>Aspect</th>
+          <th>Score</th> 
+        </tr>
+        <tr>
+          <td>Physical Health</td>
+          <td>{{ subGroup1Score }}</td> 
+        </tr>
+        <tr>
+          <td>Mental Health</td>
+          <td>{{ subGroup2Score }}</td> 
+        </tr>
+        <tr>
+          <td>Practical Knowledge</td>
+          <td>{{ subGroup3Score }}</td> 
+        </tr>
+        <tr>
+          <td>Theoretical Knowledge</td>
+          <td>{{ subGroup4Score }}</td> 
+        </tr>
+      </table>
+      -->
 
-<div>
+      <img src = "assets/img/Scoretable.JPG">
+      <p></p>
+      <img src = "assets/img/Scorecard.jpg">
+      <p></p>
+      <img src = "assets/img/CommentToParents.JPG">
+      <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+      <!--      
+      <script type="text/javascript" >
+        alert('in script tag');
+          // Load google charts
+          google.charts.load('current', {packages:['corechart']});
+          google.charts.setOnClickCallback(drawChart);
+          
+          // Draw the chart and set the chart values
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+            ['Aspects', 'Score'],
+            ['Physical', 20],
+            ['Mental', 30],
+            ['Practical', 40],
+            ['Theoretical', 10 ]
+          ]);
+          
+            // Optional; add a title and set the width and height of the chart
+            var options = {'title':'Scorecard', 'width':500, 'height':400};
+                    
+            // Display the chart inside the <div> element with id="piechart"
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+            console.log(data);
+            console.log(options);
+            console.log(chart);
+          }
+      </script>
+      -->
+      <!--<canvas id = "barChart" width = "300" height = "125" class = "chartjs-render-monitor" style = "display: block; "></canvas>-->
+        
+      <button (click) = "getReport()">Fetch Results</button>
+    </div>
+    <div *ngSwitchDefault>
+      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 
-    
-    
-    
-<img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+        <ul>
+          <li *ngFor="let q of questions | async; index as i; last as l">
+            {{ q.QUESTION_TEXT }}
+          </li>
+        </ul>
+        <p></p>
 
 
-  <ul>
-    <li *ngFor="let q of questions | async; index as l">
-      {{l}} {{ q.QUESTION_ID }}  {{ q.QUESTION_TEXT }}
-    </li>
-  </ul>
-  <p></p>
+      
+        <p></p>
+        
+      <form>
+        <input type = "radio" name = "answer" [(ngModel)] = "currAnswer" ngValue = "1" value = "1">No
+        <input type = "radio" name = "answer" [(ngModel)] = "currAnswer" ngValue = "2" value = "2">Sometimes
+        <input type = "radio" name = "answer" [(ngModel)] = "currAnswer" ngValue = "3" value = "3">Yes
 
+        <p>Selected Value: {{ currAnswer }} </p>
+      </form>
 
- 
-  <p></p>
-  
-<form>
-  <input type = "radio" name = "answer" [(ngModel)] = "currAnswer" ngValue = "1" value = "1">No
-  <input type = "radio" name = "answer" [(ngModel)] = "currAnswer" ngValue = "2" value = "2">Sometimes
-  <input type = "radio" name = "answer" [(ngModel)] = "currAnswer" ngValue = "3" value = "3">Yes
+      <button (click) = "getQuestions()">Next Question</button>
 
-  <p>Selected Value: {{ currAnswer }} </p>
-</form>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-</div>
+    </div>
+  </div>
+</body>

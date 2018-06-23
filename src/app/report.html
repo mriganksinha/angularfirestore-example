@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 Bar Graph</title>
+  </head>
+  <body>
+    <canvas id="canvasId"></canvas>
+    <!--[if IE]><script src="excanvas.js"></script><![endif]-->
+    <script src="barGraph.js"></script>
+    <script>
+      var cxt = document.getElementById("canvasId").getContext("2d");
+                        
+                        var graph = new BarGraph(ctx);
+                        graph.margin = 2;
+                        graph.width = 450;
+                        graph.height = 150;
+                        graph.xAxisLabelArr = ["Physical Health", "Mental Health", "Practical Knowledge", "Theoretical Knowledge"];
+                        graph.update([this.subGroup1Score, this.subGroup2Score, this.subGroup3Score, this.subGroup4Score]);
+    </script>
+  </body>
+</html>
